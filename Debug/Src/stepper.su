@@ -1,3 +1,0 @@
-stepper.c:22:6:Stepper_Control_Loop	0	static
-stepper.c:64:6:Step_Clockwise	8	static
-stepper.c:143:6:Step_Counter_Clockwise	8	static
