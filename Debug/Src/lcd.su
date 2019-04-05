@@ -1,0 +1,3 @@
+lcd.c:44:6:Get_Touch	16	static
+lcd.c:24:6:Display_Readings	24	static
+lcd.c:92:6:LCD_Config	24	static
