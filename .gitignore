@@ -30,6 +30,8 @@
 *.bin
 *.list
 *.map
+*.launch
+*.ld
 
 # Debug files
 *.dSYM/
@@ -38,6 +40,8 @@
 .bin
 .depend
 .map
+.txt
+.ioc
 .settings/
 .mxproject
 /Debug/
