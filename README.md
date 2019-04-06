@@ -5,6 +5,6 @@
 ## System Overview:
 ![system block diagram](https://user-images.githubusercontent.com/25499626/55660710-a548f180-57bc-11e9-864d-9f71ac593ce6.png)
 ## Final Product:
-
+![Wind Turbine](https://user-images.githubusercontent.com/25499626/55665260-05f22180-57f1-11e9-94fe-0db3d6c2661a.png)
 
 More information availble on [Wiki Page](https://github.com/markomarkusi/Wind-Turbine-Controller/wiki) (to be updated)
