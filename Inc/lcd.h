@@ -20,8 +20,8 @@
  */
 typedef enum
 {
-  START                = 0x00,
-  STOP             = 0x01,
+  START = 0x00,
+  STOP  = 0x01,
 } Turbine_StatusTypeDef;
 
 /**
@@ -30,9 +30,9 @@ typedef enum
  */
 typedef enum
 {
-  CLOCKWISE    		            = 0x00,
-  COUNTER_CLOCKWISE             = 0x01,
-  PD_CONTROLLER					= 0x02,
+  CLOCKWISE    		  = 0x00,
+  COUNTER_CLOCKWISE = 0x01,
+  PD_CONTROLLER		  = 0x02,
 } Turbine_DirectionTypeDef;
 
 /* Prototypes ----------------------------------------------------------------*/

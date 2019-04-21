@@ -16,6 +16,7 @@ static TS_StateTypeDef  		TS_State;
 Turbine_StatusTypeDef 			Turbine_Status;
 Turbine_DirectionTypeDef 		Turbine_Direction;
 uint16_t x, y;
+
 /**
   * @brief  Transmits data to LCD.
   * @param  Voltage, current, power, duty cycle
@@ -46,39 +47,35 @@ void Get_Touch(void)
 	BSP_TS_GetState(&TS_State);
     if(TS_State.touchDetected)
 		{
-    	 BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-    	 BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
-		 /* Get X and Y position of the touch position */
-		 x = TS_State.touchX[0];
-		 y = TS_State.touchY[0];
-		 if(x >= 180 && x<=320)
-		 {
-			 if(y >= 725 && y<=800)
-			 	 {
-				 	 if(Turbine_Status == START)
-				 	 {
-
-				 		 BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()-65, (uint8_t *)"START", CENTER_MODE);
-				 		 Turbine_Status = STOP;
-				 	 }
-				 	 else
-				 	 {
-				 		BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()-65, (uint8_t *)" STOP ", CENTER_MODE);
-				 		Turbine_Status = START;
-				 	 }
-		  		 }
-		 }
-		 else if(y >= 660 && y<=700)
-				 {
-					 if(x >= 150 && x<250)
-					 {
-						 Turbine_Direction = COUNTER_CLOCKWISE;
-					 }
-					 else if(270 >= 250 && x<=345)
-					 {
-						 Turbine_Direction = CLOCKWISE;
-					 }
-				 }
+      BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
+    	BSP_LCD_SetBackColor(LCD_COLOR_BLUE);
+		  /* Get X and Y position of the touch input */
+		  x = TS_State.touchX[0];
+		  y = TS_State.touchY[0];
+		  if((x >= 180 && x<=320) && (y >= 725 && y<=800))
+		    {
+				  if(Turbine_Status == START)
+				    {
+				 	    BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()-65, (uint8_t *)"START", CENTER_MODE);
+				 		  Turbine_Status = STOP;
+				 	  }
+				  else
+				 	  {
+				 	    BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize()-65, (uint8_t *)" STOP ", CENTER_MODE);
+				 		  Turbine_Status = START;
+				 	  }
+		    }
+		  else if(y >= 660 && y<=700)
+			  {
+				  if(x >= 150 && x<250)
+					  {
+						  Turbine_Direction = COUNTER_CLOCKWISE;
+					  }
+				  else if(270 >= 250 && x<=345)
+					  {
+						  Turbine_Direction = CLOCKWISE;
+					  }
+			  }
 		 }
     BSP_LCD_SetTextColor(LCD_COLOR_RED);
     BSP_LCD_SetBackColor(LCD_COLOR_WHITE);

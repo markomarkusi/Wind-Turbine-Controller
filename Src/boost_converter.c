@@ -36,49 +36,49 @@ void Perturb_Observe(float V_LOAD, float I_LOAD)
 	else if(V_LOAD < V_MIN)
 		{
 			Duty_Cycle_Previous = Duty_Cycle_Current;
-			if(Duty_Cycle_Previous - (V_MIN - V_LOAD)*BOOST_KP > 0)							//Prevents underflow
-			Duty_Cycle_Current = Duty_Cycle_Previous - (V_MIN - V_LOAD)*BOOST_KP;
+			if(Duty_Cycle_Previous - (V_MIN - V_LOAD)*BOOST_KP > 0)					//Prevents underflow
+				Duty_Cycle_Current = Duty_Cycle_Previous - (V_MIN - V_LOAD)*BOOST_KP;
 			else Duty_Cycle_Current = 0;
 		}
 
 	/* Perturb and observe algorithm */
-	else if(P_IN_Current - P_IN_Previous > 0.0f)
+	else if(P_IN_Current > P_IN_Previous)
 		{
-			if(Duty_Cycle_Current - Duty_Cycle_Previous >= 0)
+			if(Duty_Cycle_Current >= Duty_Cycle_Previous)
 				{
 					Duty_Cycle_Previous = Duty_Cycle_Current;
 					Duty_Cycle_Current = Duty_Cycle_Current + DELTA_DUTY_CYCLE;
 				}
-			else if(Duty_Cycle_Current - Duty_Cycle_Previous < 0)
+			else if(Duty_Cycle_Current < Duty_Cycle_Previous)
 				{
 					Duty_Cycle_Previous = Duty_Cycle_Current;
 					if(Duty_Cycle_Current - DELTA_DUTY_CYCLE > 0)					//Prevents underflow
-					Duty_Cycle_Current = Duty_Cycle_Current - DELTA_DUTY_CYCLE;
+						Duty_Cycle_Current = Duty_Cycle_Current - DELTA_DUTY_CYCLE;
 					else Duty_Cycle_Current = 0;
 				}
 		}
-	else if(P_IN_Current - P_IN_Previous < 0.0f)
+	else if(P_IN_Current < P_IN_Previous)
 		{
-			if(Duty_Cycle_Current - Duty_Cycle_Previous >= 0)
+			if(Duty_Cycle_Current >= Duty_Cycle_Previous)
 				{
 					Duty_Cycle_Previous = Duty_Cycle_Current;
 					if(Duty_Cycle_Current - DELTA_DUTY_CYCLE > 0)					//Prevents underflow
-					Duty_Cycle_Current = Duty_Cycle_Current - DELTA_DUTY_CYCLE;
+						Duty_Cycle_Current = Duty_Cycle_Current - DELTA_DUTY_CYCLE;
 					else Duty_Cycle_Current = 0;
 				}
-			else if(Duty_Cycle_Current - Duty_Cycle_Previous < 0)
+			else if(Duty_Cycle_Current < Duty_Cycle_Previous)
 				{
 					Duty_Cycle_Previous = Duty_Cycle_Current;
 					Duty_Cycle_Current = Duty_Cycle_Current + DELTA_DUTY_CYCLE;
 				}
 		}
-		/* Set to max duty cycle if its greater than the max value */
+		/* Set to max duty cycle if calcluated value is greater than max value */
 		if(Duty_Cycle_Current>MAX_PWM_COUNT) Duty_Cycle_Current = MAX_PWM_COUNT;
 
 		__HAL_TIM_SET_COMPARE(&htim11,TIM_CHANNEL_1,Duty_Cycle_Current);
 		P_IN_Previous = P_IN_Current;
 
-		/* --------------Safety Contingencies-------------- */
+		/* -------------------------Safety Contingencies------------------------ */
 		/* Stops the rotor if the electric brake is applied */
 		if(Turbine_Status == STOP)
 			{

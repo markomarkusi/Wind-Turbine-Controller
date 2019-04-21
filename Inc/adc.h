@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * File Name          : ADC.h
+  * File Name          : adc.h
   * Description        : This file provides code for the configuration
   *                      of the ADC instances.
   ******************************************************************************
@@ -24,7 +24,7 @@
 #define	ADC_12_BIT_FULL_SCALE		4095
 #define ADC_CHANNEL_COUNT	   		4
 #define ADC_FILTER_SIZE		 		16	// Oversampling filter size (number of readings)
-#define DEGREES_PER_ROTATION		300.0f	//0° -> 300° rotation angle
+#define DEGREES_PER_ROTATION		300.0f	//0ï¿½ -> 300ï¿½ rotation angle
 /* Ammeter and Voltmeter both have non-constant linear gain */
 /* Gain function coefficients */
 #define AMMETER_CONSTANT_COEFF		0.1752f

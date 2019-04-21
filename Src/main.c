@@ -127,7 +127,6 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 	Stepper_Control_Loop(Position);
 }
 
-
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None

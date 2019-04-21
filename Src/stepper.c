@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * File Name          : stepper.h
+  * File Name          : stepper.c
   * Description        : This file provides code to control the stepper motor
   ******************************************************************************
   */
