@@ -7,4 +7,4 @@
 ## Final Product:
 ![Wind Turbine](https://user-images.githubusercontent.com/25499626/55665260-05f22180-57f1-11e9-94fe-0db3d6c2661a.png)
 
-More information available on [Wiki Page](https://github.com/markomarkusi/Wind-Turbine-Controller/wiki) (to be updated)
+More information available in the [final report](https://github.com/markomarkusi/Wind-Turbine-Controller/blob/master/Wind%20Turbine%20-%20Final%20Report.pdf)
