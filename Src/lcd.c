@@ -71,7 +71,7 @@ void Get_Touch(void)
 					  {
 						  Turbine_Direction = COUNTER_CLOCKWISE;
 					  }
-				  else if(270 >= 250 && x<=345)
+				  else if(x >= 250 && x<=345)
 					  {
 						  Turbine_Direction = CLOCKWISE;
 					  }
